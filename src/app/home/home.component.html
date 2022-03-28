@@ -1,0 +1,66 @@
+<div class="main">
+
+    <div class="header">
+        <div class="welcome">
+          <h1>Welcome to Kanban Version 1.0</h1>
+        </div>
+        <button class="create-btn" (click)="onCreateNewProject()">Create Project</button>
+    </div>
+  
+    <div class="app-content">
+      <div class="project-intro">
+        <h2>Projects</h2>
+      </div>
+      <table class="project-list">
+        <tr>
+          <th></th>
+          <th>Name</th>
+          <th>Key</th>
+          <th>Type</th>
+          <th>Lead</th>
+        </tr>
+        <tr *ngFor="let kanbanBoard of kanbanBoards; let i = index;" class="project"> <!-- name has thumbnail with the name of the project -->
+          <th></th>
+          <td>
+            <div class="td-content">
+              <div class="img-wrapper">
+                <img class="project-thumbnail sq" src={{kanbanBoard.thumbnails.projectImg}} alt="">
+              </div>
+              <a [routerLink]="['/','kanban',kanbanBoard.key]" class="blue">{{kanbanBoard.name}}</a>
+            </div>
+          </td>
+          <td>
+            <p>{{kanbanBoard.key}}</p>
+          </td>
+          <td>
+            <p>{{kanbanBoard.name}}</p>
+          </td>
+          <td>
+            <div class="td-content">
+              <div class="img-wrapper">
+                <img class="project-thumbnail" src={{kanbanBoard.thumbnails.leadImg}} alt="">
+              </div>
+              <p>{{kanbanBoard.lead}}</p>
+            </div>
+          </td>
+          <td>
+            <div #editContainerRef class="edit-project-wrapper">
+              <i class="fa-solid fa-ellipsis"></i>
+              <div class="popup">
+                <div #editRef class="popup-item top">
+                  <p>Edit</p>
+                  <i class="fas fa-gear"></i>
+                </div>
+                <div #deleteRef class="popup-item">
+                  <p>Delete</p>
+                  <i class="fas fa-xmark"></i>
+                </div>
+              </div>
+            </div>
+          </td>
+        </tr>
+      </table>
+      
+    </div>
+  
+  </div>

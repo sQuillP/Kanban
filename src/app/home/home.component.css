@@ -1,0 +1,140 @@
+.main{
+    min-width: 900px;
+
+}
+
+.header{
+    margin: 10vh 0 5vh 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.welcome{
+    margin-left: 3em;
+}
+
+.create-btn{
+    margin-right: 3em;
+}
+
+.create-btn{
+    background-color:var(--googleblue);
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    transition: 50ms linear all;
+}
+
+.create-btn:hover{
+    background: var(--hoverblue);
+    transform: scale(1.1);
+}
+
+.header h2{
+    margin: 0px;
+}
+
+.app-content{
+    width: 100%;
+}
+
+.project{
+    border: 2px solid lightgray;
+}
+
+.project-intro{
+    margin-left: 3em;
+}
+
+
+.project-list{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+}
+
+td, th{
+    padding-left: 10px;
+}
+
+
+.td-content *{
+    display: inline-block;
+}
+
+
+.td-content{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.blue {
+    color: var(--googleblue);
+    text-decoration: none;
+}
+
+.img-wrapper{
+    width: 30px;
+    height: 30px;
+    margin-right: 20px;
+}
+
+.project-thumbnail{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.edit-project-wrapper{
+    padding: 3px;
+    border-radius: 3px;
+    transition: 100ms linear transform;;
+    display: inline-block;
+    position:relative;
+
+}
+
+.edit-project-wrapper .fa-ellipsis:hover{
+    /* background: gray; */
+    transform: scale(1.4);
+}
+
+.popup{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 10px;
+    flex-direction: column;
+    position: absolute;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.popup-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 5px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.top{
+    border-bottom: 1px solid #777777;
+}
+
+.popup-item p{
+    margin: 0;
+}
+
+.popup-item i{
+    margin: 0 5px;
+}
+
+.popup-item:hover{
+    background: #eee;
+}

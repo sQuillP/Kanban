@@ -1,0 +1,66 @@
+<div *ngIf="showOverlay" class="overlay" #overlay>
+    <!-- Look up overlay animations. -->
+    <div #overlayContent class="issue-container">
+        <p class="issue-header">Enter Issue Details</p>
+        <input #overlayInput autofocus placeholder="TODO..." class="issue-input" type="text">
+        <button class="issue-btn" (click)="onAddIssue()">Create Issue</button>
+    </div>
+</div>
+<div class="main">
+    <div class="main-wrapper">
+        <div class="previous">
+            <a routerLink="/home" style="text-decoration: none; color: var(--googleblue);"> <i class="fas fa-arrow-left"></i> Home </a>
+        </div>
+        <div class="current-route">
+            <p>Projects / {{kanbanBoard.name}}</p>
+        </div>
+        <div class="project-title">
+            <h2 class="title">My project {{key}}</h2>
+        </div>
+        <hr>
+        <div class="kanban-container" cdkDropListGroup>
+            <div class="kanban-categories">
+                <!-- [cdkDropListConnectedTo]="onLinkIds(i)" -->
+                <div 
+                *ngFor="let category of kanbanBoard.categories; let i = index" 
+                class="kanban-category"
+                cdkDropList
+                [cdkDropListData]="category.issues"
+                (cdkDropListDropped)="onDrop($event)"
+                >
+                    <div class="category-title" #toggler >
+                        <input
+                        autofocus 
+                        #editCategory
+                        *ngIf="selectedCategory === i"  
+                        type="text" class="edit-category" 
+                        [value]="category.category">
+                        <p *ngIf="selectedCategory !== i">{{category.category | uppercase}}</p>
+                        <div *ngIf="selectedCategory !== i" class="category-options">
+                            <div class="options-wrapper" #addRef>
+                                <i class="fas fa-plus"></i>
+                            </div>
+                            <div class="options-wrapper" #deleteRef>
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                    </div>
+                    <div *ngFor="let issue of category.issues; let j = index;" 
+                    class="kanban-issues"
+                    cdkDrag
+                    > <!--Issues go here-->
+                        <div class="kanban-issue">
+                            <p>{{issue | capitalize}}</p>
+                            <div class="delete-issue-wrapper" (click)="onDeleteIssue(i,j)">
+                                <i class="fa-solid fa-xmark"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="add-category" (click)="onAddCategory()">
+                <i class="fas fa-plus"></i>
+            </div>
+        </div>
+    </div>
+</div>

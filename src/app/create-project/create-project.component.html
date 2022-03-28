@@ -1,0 +1,54 @@
+<div class="main">
+    <div class="exit" (click)="onNavigateBack()">
+        <i class="fa-solid fa-xmark"></i>
+    </div>
+    <div class="content-wrapper">
+        <div class="title">
+            <h2>Create Project</h2>
+            <!-- <hr class="line"> -->
+        </div>
+        <form [formGroup]="createKanban">
+            <div class="input-container">
+                <label class="input-label" for="project_name">Name <span style="color: red;">*</span></label>
+                <input placeholder="Project name" formControlName="kanban-name" type="text" class="input-field" id="project_name">
+                <div *ngIf="onHandleNameErrors()" class="error-box"><p class="small error">{{nameError}}</p></div>
+            </div>
+            <div class="about">
+                <!-- <div class="about-title">
+                    <p class="small-header">Project Name</p>
+                </div> -->
+                <div class="about-content">
+                    <p class="small">Enter a meaningful name that has relevance to the project.</p>
+                </div>
+            </div>
+            <div class="input-container">
+                <label class="input-label" for="projectType">Type <span style="color: red;">*</span></label>
+                <input placeholder="(e.g Software development)" formControlName="type" class="input-field" id="projectType">
+                <div *ngIf="onNameError('type')" class="error-box"><p class="small error">Type length cannot exceed 30 characters. </p></div>
+            </div>
+            <!-- <div class="about-content">
+                <p class="small">Describe what this kanban board is for (e.g software, design, etc).</p>
+            </div> -->
+            <div class="input-container">
+                <label class="input-label" for="lead">Lead<span style="color: red;">*</span></label>
+                <input placeholder="Sam Smith (project leader)" formControlName="lead" class="input-field" id="lead">
+                <div *ngIf="onNameError('lead')" class="error-box"><p class="small error">Lead length cannot exceed 30 characters. </p></div>
+            </div>
+            <!-- <div class="about-content">
+                <p class="small">Enter the current leader's name for the project. This can be yourself or another employee.</p>
+            </div> -->
+            <div class="input-container">
+                <label for="key" class="input-label">Key <span style="color: red;">*</span></label>
+                <input placeholder="abc123" formControlName="kanban-id" type="text" class="input-field key">
+                <div *ngIf="onHandleIdErrors()" class="error-box"><p class="small error">{{idError}}</p></div>
+            </div>
+            <div class="about">
+                <div class="about-content">
+                    <p class="small"><strong>Note: </strong> A key must be unique in every project.</p>
+                </div>
+            </div>
+            <button class="create-btn" type="button" (click)="onCreateKanban()">Save</button>
+            <div *ngIf="invalidForm" class="submit-error"><p class="error"> <i class="fas fa-x"></i>Please fill in fields correctly</p></div>
+        </form>
+    </div>
+</div>
